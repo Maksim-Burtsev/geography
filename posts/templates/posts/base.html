@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>GEO</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link
+      href="{% static 'posts/css/default.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        <h1><a href="http://web-mastery.info/">GEO</a></h1>
+        <h2>познавай мир вместе с нами!</h2>
+      </div>
+      <div id="menu">
+        <ul>
+          <li><a href="/">Главная</a></li>
+          <li><a href="/all_posts">Статьи</a></li>
+          <li><a href="http://web-mastery.info/">Тесты</a></li>
+          <li><a href="http://web-mastery.info/">Форум</a></li>
+          <li><a href="http://web-mastery.info/">Авторизация</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="page">
+      <div id="content">
+        <div style="margin-bottom: 20px">
+        {% block content %}
+          
+
+
+          {% endblock %}
+        </div>
+        <div class="twocols"></div>
+      </div>
+      <!-- end content -->
+      <div id="sidebar">
+        <div id="search" class="boxed">
+          <h2 class="title">Quick Search</h2>
+          <div class="content">
+            <form id="searchform" method="get" action="">
+              <fieldset>
+                <input
+                  id="searchinput"
+                  type="text"
+                  name="searchinput"
+                  value=""
+                />
+                <input id="searchsubmit" type="submit" value="Search" />
+                <p><a href="http://web-mastery.info/">Advanced Search</a></p>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div id="news" class="boxed">
+          <h2 class="title">Свежие статьи</h2>
+          <div class="content">
+            <ul>
+              <li class="first">
+                <h3>04 July 2007</h3>
+                <p>
+                  <a href="http://web-mastery.info/"
+                    >In posuere eleifend odio quisque semper&hellip;</a
+                  >
+                </p>
+              </li>
+              <li>
+                <h3>29 June 2007</h3>
+                <p>
+                  <a href="http://web-mastery.info/"
+                    >Donec leo, vivamus fermentum nibh in augue&hellip;</a
+                  >
+                </p>
+              </li>
+              <li>
+                <h3>13 June 2007</h3>
+                <p>
+                  <a href="http://web-mastery.info/"
+                    >Quisque dictum integer nisl risus sagittis&hellip;</a
+                  >
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="extra" class="boxed">
+          <h2 class="title">Свежие галереи</h2>
+          <div class="content">
+            <ul class="list">
+              <li class="first">
+                <a href="http://web-mastery.info/"
+                  >Ut semper vestibulum est&hellip;</a
+                >
+              </li>
+              <li>
+                <a href="http://web-mastery.info/"
+                  >Vestibulum luctus venenatis&hellip;</a
+                >
+              </li>
+              <li>
+                <a href="http://web-mastery.info/"
+                  >Integer rutrum nisl in mi&hellip;</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- end sidebar -->
+      <div style="clear: both">&nbsp;</div>
+    </div>
+    <!-- end page -->
+    <div id="footer">
+      <p id="legal">&copy;2022 Copyright</p>
+    </div>
+  </body>
+</html>
