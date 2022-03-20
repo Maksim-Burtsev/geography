@@ -6,6 +6,9 @@
     {% if post.photo %}
         <p><img src="{{post.photo.url}}" width="600px;" /></p>
     {% endif %}
+    {% autoescape off %}
     <p>{{post.text}}</p>
+    {% endautoescape %}
     <p><a href="{% url 'home' %}">На главную</a></p>
+    
 {% endblock %}
