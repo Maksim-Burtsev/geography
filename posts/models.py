@@ -1,7 +1,9 @@
-from distutils.command.upload import upload
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
+
 
 
 class Category(models.Model):
@@ -20,13 +22,21 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
+def validate_summary(summary):
+    summary_words = len(summary.split())
+    if summary_words > 133:
+        raise ValidationError(
+            f'Максимальная длина текста составляет 133 слова, ваша длина - {summary_words}')
+
+
 class Post(models.Model):
     """Публикация"""
     title = models.CharField('Название', max_length=255)
 
     text = models.TextField('Тест публикации')
 
-    summary = models.TextField('Текст на главной', blank=True)
+    summary = models.TextField(
+        'Текст на главной', blank=True, validators=[validate_summary])
 
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                verbose_name='Автор', related_name='posts')
