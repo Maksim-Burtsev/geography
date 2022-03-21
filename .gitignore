@@ -1,4 +1,4 @@
-# plan..txt
+plan..txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -60,7 +60,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-# db.sqlite3
+db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
