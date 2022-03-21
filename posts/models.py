@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 
-
-
 class Category(models.Model):
     """Категории публикаций"""
     name = models.CharField('Название', max_length=255)
@@ -15,7 +13,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'cat_pk': self.pk})
+        return reverse('posts:category', kwargs={'cat_pk': self.pk})
 
     class Meta:
         verbose_name = 'Категория'
@@ -56,7 +54,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_pk': self.pk})
+        return reverse('posts:post', kwargs={'post_pk': self.pk})
 
     class Meta:
         verbose_name = 'Публикация'

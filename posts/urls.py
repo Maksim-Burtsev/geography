@@ -2,6 +2,9 @@ from django.urls import path
 
 from posts.views import index, post, all_posts, show_category
 
+
+app_name = 'posts'
+
 urlpatterns = [
     path('', index, name='home'),
     path('post/<int:post_pk>', post, name='post'),

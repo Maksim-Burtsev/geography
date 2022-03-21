@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     'posts.apps.PostsConfig',
+    'questions.apps.QuestionsConfig',
 ]
 
 MIDDLEWARE = [
@@ -38,7 +39,7 @@ ROOT_URLCONF = 'geo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(os.path.join(BASE_DIR, 'templates')),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

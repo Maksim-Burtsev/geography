@@ -1,4 +1,4 @@
-{% extends 'posts/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <h2 style="text-align:center;color:#FF5723;font-size:30px;">{{category.name}}</h2><br><br>
@@ -11,5 +11,5 @@
     <p>{{post.summary}}</p>
     <p><a href="{{post.get_absolute_url}}">Читать далее</a> </p>
 {% endfor %}
-<p><a href="{% url 'posts'%}" style="color:#144B6B;text-decoration: none;">Назад</a></p>
+<p><a href="{% url 'posts:posts'%}" style="color:#144B6B;text-decoration: none;">Назад</a></p>
 {% endblock %}
