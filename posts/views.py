@@ -6,7 +6,7 @@ from posts.models import Post, Category
 
 def index(request):
     """Главная страница"""
-    posts = Post.objects.all()
+    posts = Post.objects.filter(is_publish=True)
     paginator = Paginator(posts, 1)
 
     page_number = request.GET.get('page')
