@@ -1,4 +1,4 @@
-{% extends 'posts/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <h2>{{post.title}}</h2>
@@ -9,6 +9,6 @@
     {% autoescape off %}
     <p>{{post.text}}</p>
     {% endautoescape %}
-    <p><a href="{% url 'home' %}">На главную</a></p>
+    <p><a href="{% url 'posts:home' %}">На главную</a></p>
     
 {% endblock %}
