@@ -1,13 +1,18 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Test(models.Model):
     """Тестирование"""
 
     name = models.CharField('Название теста', max_length=255)
+    photo = models.ImageField('Обложка теста', upload_to='test_photos',
+                              blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('questions:show_test', kwargs={'test_pk':self.pk})
 
     class Meta:
         verbose_name = 'Тест'
@@ -17,7 +22,7 @@ class Test(models.Model):
 class Question(models.Model):
     """Вопрос"""
     text = models.CharField('Вопрос', max_length=255)
-    test = models.ForeignKey(Test, on_delete=models.SET_NULL,null=True,
+    test = models.ForeignKey(Test, on_delete=models.SET_NULL, null=True,
                              related_name='questions', verbose_name='Тест')
 
     def __str__(self) -> str:

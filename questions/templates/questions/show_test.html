@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{test.name}}</h1>
+    {% for question in test.questions.all %}
+        <h3><p>{{question}}</p></h3>
+        {% for answer in question.answers.all %}
+        <form method="POST"> 
+            {% csrf_token %}
+            <div>
+                <input type = "checkbox" name = "{{question.id}}" value = "{{answer.id}}" >{{answer}}<br>
+            </div>
+            {% endfor %}
+            
+            {% endfor %} <br><br>
+            <button type="submit">Отправить</button>
+        </form>
+{% endblock %}
