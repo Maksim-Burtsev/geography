@@ -2,10 +2,11 @@
 
 {% block content %}
 <form action="{% url 'weather:home' %}" method="get">
-    <input name="city" type="text" placeholder="Введите ваш город", style="width: 200px;">
+    <input name="city" type="text" placeholder="Введите ваш город", style="width: 200px;" value="{{city}}">
     <button type="submit">Узнать погоду</button>
   </form>
-
+  {% if temp %}
   <p>Температура {{temp}} C</p>
   <p>Ощущается как {{temp_feel}} C</p>
+  {% endif %}
 {% endblock %}
