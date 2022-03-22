@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'weather:home' %}" method="get">
+    <input name="city" type="text" placeholder="Введите ваш город", style="width: 200px;">
+    <button type="submit">Узнать погоду</button>
+  </form>
+
+  <p>Температура {{temp}} C</p>
+  <p>Ощущается как {{temp_feel}} C</p>
+{% endblock %}
