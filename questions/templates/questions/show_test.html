@@ -8,11 +8,15 @@
         <form method="POST"> 
             {% csrf_token %}
             <div>
-                <input type = "checkbox" name = "{{question.id}}" value = "{{answer.id}}" >{{answer}}<br>
+                <input type = "radio" name = "{{question.id}}" value = "{{answer.id}}" >{{answer}}<br>
             </div>
             {% endfor %}
-            
-            {% endfor %} <br><br>
+        {% endfor %} <br><br>
+        {% if res %}
+        
+        <p>Результат {{percent}}% <br>({{res}}/{{questions}})  </p>
+        {%  else %}
             <button type="submit">Отправить</button>
+        {% endif %}
         </form>
 {% endblock %}
