@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align:center;">Авторизация</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {% for f in form %}
+<div>
+    <p style="text-align:center;">{{f}} <br>
+        {{f.label}}</p>
+    </p>
+</div>
+    {% endfor %}
+    <br>
+    <div style="text-align:center;">
+        <button type="submit" style="font-size:17px;">Войти</button>
+    </div>
+    <div style="text-align:center;">
+        <p>Если у вас ещё нет аккаунта, то<a href="{% url 'posts:registration'%}"> зарегистрируйтесь тут</a>.</p>
+    </div>
+</form>
+{% endblock %}
