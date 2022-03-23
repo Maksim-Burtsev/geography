@@ -20,14 +20,14 @@
         <h1><a href="#">GEO</a></h1>
         <h2>познавай мир вместе с нами!</h2>
       </div>
-      <div id="menu" style="width:103%;">
+      <div id="menu" style="width:110%;">
         <ul>
           <li><a href="/">Главная</a></li>
           <li><a href="/all_posts">Статьи</a></li>
           <li><a href="/tests">Тесты</a></li>
           <li><a href="/weather">Погода</a></li>
-          <li><a href="#">Форум</a></li>
-          <li><a href="{% url 'posts:authorization'%}">Авторизация</a></li>
+          <li><a href="{% url 'forum:topics'%}">Форум</a></li>
+          <li><a href="{% url 'posts:authorization'%}">Вход/Регистрация</a></li>
         </ul>
       </div>
     </div>

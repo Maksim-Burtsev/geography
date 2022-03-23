@@ -4,6 +4,7 @@
 <h1 style="text-align:center;">Регистрация</h1>
 <form action="" method="post">
     {% csrf_token %}
+    {{form.errors}}
     {% for f in form %}
 <div>
     <p style="text-align:center;">{{f}} <br>
@@ -11,6 +12,9 @@
     </p>
 </div>
     {% endfor %}
+    <p style="text-align: center; font-size:14px;">Ваш пароль должен содержать как минимум 8 символов. <br>
+        Пароль не должен быть слишком простым и распространенным. <br>
+        Пароль не может состоять только из цифр.</p>
     <br>
     <div style="text-align:center;">
         <button type="submit" style="font-size:17px;">Создать аккаунт</button>

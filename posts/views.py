@@ -69,10 +69,12 @@ def registration(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-
             return redirect('posts:home')
+        else:
+            pass
 
     context = {}
     context['title'] = 'Регистрация'
+    context['form'] = UserCreationForm
 
     return render(request, 'posts/registration.html', context)
