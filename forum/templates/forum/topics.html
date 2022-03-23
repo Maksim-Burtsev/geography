@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for topic in topics %}
+        <p style="font-size:30px;text-align:center;">
+            <a href="{{topic.get_absolute_url}}" style="color:#144B6B;text-decoration: none;">{{topic}}
+            <p><img src="{{topic.photo.url}}" width="600px;" /></p>
+        </a>
+        </p>
+    {% endfor %}
+{% endblock %}

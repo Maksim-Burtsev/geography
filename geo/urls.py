@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('tests', include('questions.urls')),
     path('weather/', include('weather.urls')),
+    path('forum', include('forum.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

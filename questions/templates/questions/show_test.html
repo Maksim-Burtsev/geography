@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{test.name}}</h1>
+<h1 style="text-align:center;color:#FF5723;font-size:30px;">{{test.name}}</h1>
     {% for question in test.questions.all %}
-        <h3><p>{{question}}</p></h3>
+        <p style="font-size: 23px;">{{question}}</p>
         {% for answer in question.answers.all %}
         <form method="POST"> 
             {% csrf_token %}
-            <div>
-                <input type = "radio" name = "{{question.id}}" value = "{{answer.id}}" >{{answer}}<br>
+            <div style="font-size: 20px;">
+                <input type = "radio" name = "{{question.id}}" value = "{{answer.id}}" >{{answer}}<br><br>
             </div>
             {% endfor %}
         {% endfor %} <br><br>
         {% if res %}
         
-        <p>Результат {{percent}}% <br>({{res}}/{{questions}})  </p>
+        <p style="font-size: 20px;">Результат {{percent}}% <br>({{res}}/{{questions}})  </p>
         {%  else %}
-            <button type="submit">Отправить</button>
+            <button type="submit" style="font-size: 20px;">Отправить</button>
         {% endif %}
         </form>
 {% endblock %}

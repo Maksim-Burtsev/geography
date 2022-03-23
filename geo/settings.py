@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'questions.apps.QuestionsConfig',
     'weather.apps.WeatherConfig',
+    'forum.apps.ForumConfig',
 ]
 
 MIDDLEWARE = [
