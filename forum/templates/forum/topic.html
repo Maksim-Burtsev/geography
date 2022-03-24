@@ -11,9 +11,22 @@
     {% else %}
     <p><a href="{% url 'posts:authorization'%}">Авторизируйтесь</a>, чтобы получить доступ к обсуждению</p>
     {% endif %}
-    {% for message in topic.messages.all %}
+    {% for message in page_obj %}
         <p> <span style="color:#FF5723">{{message.author}}</span> {{message.publish_time}}</p>
         <p>{{message.text}}</p>
     {% endfor %}
+</div>
+<div class="pagination" style="text-align:center;">
+    <span class="page-links">
+        {% if page_obj.has_previous %}
+            <a href="{% url 'forum:show_topic' topic.pk %}?page={{ page_obj.previous_page_number }}">предыдущая</a>
+        {% endif %}
+        <span class="page-current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+            <a href="{% url 'forum:show_topic' topic.pk %}?page={{ page_obj.next_page_number }}">следующая</a>
+        {% endif %}
+    </span>
 </div>
 {% endblock %}

@@ -1,15 +1,17 @@
-from ast import arg
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 
 from forum.models import Message, Topic
 from forum.forms import MessageForm
 
+
 def topics(request):
     """Страница вывода всех существуюших обсуждений"""
     topics = Topic.objects.all()
-    context = {'topics':topics}
+    context = {'topics': topics}
 
     return render(request, 'forum/topics.html', context)
+
 
 def show_topic(request, topic_pk):
     """Страница обсуждения"""
@@ -28,8 +30,19 @@ def show_topic(request, topic_pk):
             )
             return redirect('forum:show_topic', topic_pk)
 
-    topic = Topic.objects.get(pk=topic_pk)
-    context = {'topic':topic}
+    topic = Topic.objects.prefetch_related('messages').get(pk=topic_pk)
+
+    messages = topic.messages.all()
+
+    paginator = Paginator(messages, 25)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'topic': topic,
+        'page_obj': page_obj,
+    }
 
     if request.user.is_authenticated:
         form = MessageForm()
