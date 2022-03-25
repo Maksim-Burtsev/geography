@@ -18,7 +18,7 @@ def show_test(request, test_pk):
         context['res'] = res
         context['questions'] = questions
         context['percent'] = percent
-
+        print(res)
     test = Test.objects.get(pk=test_pk)
 
     context['test'] = test
@@ -27,7 +27,7 @@ def show_test(request, test_pk):
     
 def _get_test_result(request, test_pk) -> tuple:
     """Вычисляет результат прохождения теста"""
-    test = Test.objects.get(pk=1) #select
+    test = Test.objects.get(pk=test_pk) #select
     questions = test.questions.all()
 
     res = 0
