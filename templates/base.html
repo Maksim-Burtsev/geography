@@ -27,7 +27,11 @@
           <li><a href="/tests">Тесты</a></li>
           <li><a href="/weather">Погода</a></li>
           <li><a href="{% url 'forum:topics'%}">Форум</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'posts:logout' %}">Выйти</a></li>
+          {% else %}
           <li><a href="{% url 'posts:authorization'%}">Вход/Регистрация</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>

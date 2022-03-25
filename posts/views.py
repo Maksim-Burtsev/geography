@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 from posts.models import Post, Category
 
@@ -94,3 +95,8 @@ def registration(request):
     context['form'] = UserCreationForm
 
     return render(request, 'posts/registration.html', context)
+
+def logout_user(request):
+    """Выход из аккаунта"""
+    logout(request)
+    return redirect('posts:home')
