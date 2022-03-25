@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="height:595px;">
 <form action="{% url 'weather:home' %}" method="get">
     <input name="city" type="text" placeholder="Введите ваш город", style="width: 200px;" value="{{city}}">
     <button type="submit">Узнать погоду</button>
@@ -10,4 +11,5 @@
   <p>Ощущается как <span style="color:#FF5723;">{{temp_feel}} ℃</span></p>
   <img src="{{image_url}}" alt="oops...">
   {% endif %}
+</div>
 {% endblock %}
