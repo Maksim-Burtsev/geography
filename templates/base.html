@@ -42,18 +42,17 @@
       <!-- end content -->
       <div id="sidebar">
         <div id="search" class="boxed">
-          <h2 class="title">Quick Search</h2>
+          <h2 class="title">Быстрый поиск</h2>
           <div class="content">
             <form id="searchform" method="get" action="">
               <fieldset>
                 <input
                   id="searchinput"
                   type="text"
-                  name="searchinput"
+                  name="search"
                   value=""
                 />
-                <input id="searchsubmit" type="submit" value="Search" />
-                <p><a href="#">Advanced Search</a></p>
+                <input id="searchsubmit" type="submit" value="Искать" />
               </fieldset>
             </form>
           </div>
@@ -62,6 +61,7 @@
           <h2 class="title">Свежие статьи</h2>
           <div class="content">
             <ul>
+              {% block newposts%}
               <li class="first">
                 <h3>04 July 2007</h3>
                 <p>
@@ -70,44 +70,21 @@
                   >
                 </p>
               </li>
-              <li>
-                <h3>29 June 2007</h3>
-                <p>
-                  <a href="#"
-                    >Donec leo, vivamus fermentum nibh in augue&hellip;</a
-                  >
-                </p>
-              </li>
-              <li>
-                <h3>13 June 2007</h3>
-                <p>
-                  <a href="#"
-                    >Quisque dictum integer nisl risus sagittis&hellip;</a
-                  >
-                </p>
-              </li>
+              {% endblock %}
             </ul>
           </div>
         </div>
         <div id="extra" class="boxed">
-          <h2 class="title">Свежие галереи</h2>
+          <h2 class="title">Обсуждения</h2>
           <div class="content">
             <ul class="list">
-              <li class="first">
-                <a href="#"
-                  >Ut semper vestibulum est&hellip;</a
-                >
-              </li>
-              <li>
-                <a href="#"
-                  >Vestibulum luctus venenatis&hellip;</a
-                >
-              </li>
+              {% block topics %}
               <li>
                 <a href="#"
                   >Integer rutrum nisl in mi&hellip;</a
                 >
               </li>
+              {% endblock %}
             </ul>
           </div>
         </div>

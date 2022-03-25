@@ -33,11 +33,11 @@ def get_weather(request):
             temp = temp_json.get('temp')
             temp_feel = temp_json.get('feels_like')
 
-            # image_url = get_city_image_url(city)
+            image_url = get_city_image_url(city)
 
             context['temp'] = round(temp)
             context['temp_feel'] = round(temp_feel)
             context['city'] = city
-            # context['image_url'] = image_url
+            context['image_url'] = image_url
 
     return render(request, 'weather/weather_index.html', context)

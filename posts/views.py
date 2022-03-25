@@ -7,15 +7,30 @@ from django.shortcuts import redirect
 
 from posts.models import Post, Category
 
+from forum.models import Topic
+
 
 def index(request):
     """Главная страница"""
-    posts = Post.objects.filter(is_publish=True)
-    paginator = Paginator(posts, 7)
+    if request.GET.get('search'):
+        search = request.GET.get('search')
+        posts = Post.objects.filter(is_publish=True, title__icontains=search)
+        new_posts = Post.objects.filter(is_publish=True)[:3]
+    else:
+        posts = Post.objects.filter(is_publish=True)
+        new_posts = posts[:3]
+
+    paginator = Paginator(posts, 5)
+    topics = Topic.objects.all()[:3]
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {'page_obj': page_obj, }
+    context = {
+        'page_obj': page_obj,
+        'new_posts': new_posts,
+        'topics':topics,
+    }
+    print(new_posts)
 
     return render(request, 'posts/index.html', context)
 
@@ -44,6 +59,7 @@ def show_category(request, cat_pk):
     context = {'category': category, }
 
     return render(request, 'posts/category.html', context)
+
 
 def authorization(request):
     """Авторизация пользователя"""
