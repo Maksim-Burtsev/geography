@@ -1,5 +1,5 @@
-import random
 import requests
+import random
 
 from bs4 import BeautifulSoup
 import fake_useragent
@@ -18,17 +18,12 @@ def get_city_image_url(city: str) -> str:
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'lxml')
 
-        try:
-            images = soup.find_all(
-                'img', {'class': 'serp-item__thumb justifier__thumb'})
-        except:
-            image_url = None
-        else:
-            image_url = None
-            # image = random.choice(images)
-            # image_url = f"https:{image['src']}"
+        div = soup.find(
+            'div', {'class': 'page-layout__content-wrapper b-page__content'})
 
-    return image_url
+        images = div.find_all('img')
+
+    return f'https:{random.choice(images)["src"]}'
 
 
 if __name__ == '__main__':

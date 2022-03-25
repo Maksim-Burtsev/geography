@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block newposts%}
+    {% for npost in new_posts %}
+    <li class="first">
+    <h3> <a href="{{npost.get_absolute_url}}"
+        >{{npost.title}}</a
+        ></h3>
+                    <p>
+                    {{npost.created_time}}
+                    </p>
+                </li>
+    {% endfor %}
+{% endblock %}
 
+{% block topics %}
+{% for topic in topics %}
+<li>
+    <a href="{{topic.get_absolute_url}}"
+      >{{topic}}</a
+    >
+  </li>
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+{% autoescape off %}
 {% for post in page_obj %}
     <h2>{{post.title}}</h2>
     <p>{{post.created_time}}</p>
@@ -25,4 +48,5 @@
         {% endif %}
     </span>
 </div>
+{% endautoescape %}
 {% endblock %}
