@@ -1,26 +1,37 @@
 {% extends 'base.html' %}
 
-{% block newposts%}
-    {% for npost in new_posts %}
-    <li class="first">
-    <h3> <a href="{{npost.get_absolute_url}}"
-        >{{npost.title}}</a
-        ></h3>
-                    <p>
-                    {{npost.created_time}}
-                    </p>
-                </li>
-    {% endfor %}
-{% endblock %}
-
-{% block topics %}
-{% for topic in topics %}
+{% block board %}
+ <div id="news" class="boxed"> 
+    <h2 class="title">Свежие статьи</h2>
+    <div class="content">
+      <ul>
+        {% for npost in new_posts %}
+        <li class="first">
+        <h3> <a href="{{npost.get_absolute_url}}"
+            >{{npost.title}}</a
+            ></h3>
+                        <p>
+                        {{npost.created_time}}
+                        </p>
+                    </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div id="extra" class="boxed">
+    <h2 class="title">Обсуждения</h2>
+    <div class="content">
+      <ul class="list">
+        {% for topic in topics %}
 <li>
     <a href="{{topic.get_absolute_url}}"
       >{{topic}}</a
     >
   </li>
 {% endfor %}
+      </ul>
+    </div>
+  </div> 
 {% endblock %}
 
 {% block content %}

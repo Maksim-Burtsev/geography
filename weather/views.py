@@ -1,8 +1,8 @@
-from django.shortcuts import render
+import os
 
+from django.shortcuts import render
 from weather.services import get_city_image_url
 
-import os
 from dotenv import load_dotenv
 from pyowm import OWM
 
@@ -22,9 +22,8 @@ def get_weather(request):
 
         try:
             observation = mgr.weather_at_place(city)
-            weather = observation.weather
-        except:
-            pass
+        except Exception as e:
+            print(e)
         else:
             w = observation.weather
 
@@ -33,11 +32,15 @@ def get_weather(request):
             temp = temp_json.get('temp')
             temp_feel = temp_json.get('feels_like')
 
-            image_url = get_city_image_url(city)
-
+            try:
+                image_url = get_city_image_url(city)
+            except Exception as e:
+                print(e)
+            else:    
+                context['image_url'] = image_url
+            
             context['temp'] = round(temp)
             context['temp_feel'] = round(temp_feel)
             context['city'] = city
-            context['image_url'] = image_url
 
     return render(request, 'weather/weather_index.html', context)
