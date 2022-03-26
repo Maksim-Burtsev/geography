@@ -16,10 +16,10 @@ def index(request):
     if request.GET.get('search'):
         search = request.GET.get('search')
         posts = Post.objects.filter(is_publish=True, title__icontains=search)
-        new_posts = Post.objects.filter(is_publish=True)[:3]
+        new_posts = Post.objects.filter(is_publish=True).posts.order_by('?')[:3]
     else:
         posts = Post.objects.filter(is_publish=True)
-        new_posts = posts[:3]
+        new_posts = posts.order_by('?')[:3]
 
     paginator = Paginator(posts, 5)
     topics = Topic.objects.all()[:3]

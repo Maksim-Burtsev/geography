@@ -46,7 +46,7 @@
       <!-- end content -->
       <div id="sidebar">
         <div id="search" class="boxed">
-          <h2 class="title">Быстрый поиск</h2>
+          <h2 class="title">Быстрый поиск статьи</h2>
           <div class="content">
             <form id="searchform" method="get" action="">
               <fieldset>
@@ -61,37 +61,8 @@
             </form>
           </div>
         </div>
-        <div id="news" class="boxed">
-          <h2 class="title">Свежие статьи</h2>
-          <div class="content">
-            <ul>
-              {% block newposts%}
-              <li class="first">
-                <h3>04 July 2007</h3>
-                <p>
-                  <a href="http://web-mastery.info/"
-                    >In posuere eleifend odio quisque semper&hellip;</a
-                  >
-                </p>
-              </li>
-              {% endblock %}
-            </ul>
-          </div>
-        </div>
-        <div id="extra" class="boxed">
-          <h2 class="title">Обсуждения</h2>
-          <div class="content">
-            <ul class="list">
-              {% block topics %}
-              <li>
-                <a href="#"
-                  >Integer rutrum nisl in mi&hellip;</a
-                >
-              </li>
-              {% endblock %}
-            </ul>
-          </div>
-        </div>
+        {% block board %}
+        {% endblock %}
       </div>
       <!-- end sidebar -->
       <div style="clear: both">&nbsp;</div>
