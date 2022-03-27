@@ -1,8 +1,35 @@
-import requests
+import os
 import random
+import requests
 
-from bs4 import BeautifulSoup
 import fake_useragent
+from dotenv import load_dotenv
+from bs4 import BeautifulSoup
+from pyowm import OWM
+
+
+def get_city_temp(city: str):
+    """Возвращает текущую температуру и как она ощущается"""
+    load_dotenv()
+
+    api_key = os.getenv('API_KEY')
+
+    owm = OWM(api_key)
+    mgr = owm.weather_manager()
+
+    try:
+        observation = mgr.weather_at_place(city)
+    except Exception as e:
+        print(e)
+    else:
+        w = observation.weather
+
+        temp_json = w.temperature('celsius')
+
+        temp = temp_json.get('temp')
+        temp_feel = temp_json.get('feels_like')
+
+    return (temp, temp_feel)
 
 
 def get_city_image_url(city: str) -> str:

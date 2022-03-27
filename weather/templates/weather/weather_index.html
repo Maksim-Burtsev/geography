@@ -9,7 +9,9 @@
   {% if temp %}
   <p>Температура <span style="color:#FF5723;">{{temp}} ℃</span></p>
   <p>Ощущается как <span style="color:#FF5723;">{{temp_feel}} ℃</span></p>
+  {% if image_url %}
   <img src="{{image_url}}" alt="oops...">
+  {% endif %}
   {% endif %}
 </div>
 {% endblock %}
