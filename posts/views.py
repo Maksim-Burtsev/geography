@@ -87,8 +87,6 @@ def registration(request):
             user = form.save()
             login(request, user)
             return redirect('posts:home')
-        else:
-            pass
 
     context = {}
     context['title'] = 'Регистрация'

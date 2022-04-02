@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 class Topic(models.Model):
     """Тема обсуждений"""
     name = models.CharField('Тема обсуждения', max_length=255)
+    
     photo = models.ImageField('Фото', upload_to='topic_photo',
                               blank=True, null=True)
 
@@ -17,9 +18,6 @@ class Topic(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('forum:show_topic', kwargs={'topic_pk':self.pk})
-
     class Meta:
         verbose_name = 'Обсуждение'
         verbose_name_plural = 'Обсуждения'
@@ -27,6 +25,7 @@ class Topic(models.Model):
 
 class Message(models.Model):
     """Сообщение/Комментарий"""
+    
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                verbose_name='Автор', related_name='messages')
 

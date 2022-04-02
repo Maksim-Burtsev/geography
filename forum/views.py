@@ -17,7 +17,6 @@ def show_topic(request, topic_pk):
     """Страница обсуждения"""
 
     if request.method == 'POST':
-        print(request.POST)
         if request.user.is_authenticated:
             user_id = request.user.id
             text = request.POST.get('text')

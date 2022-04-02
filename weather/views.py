@@ -16,15 +16,16 @@ def get_weather(request):
             print(e)
 
         else:
+            context['temp'] = round(temp)
+            context['temp_feel'] = round(temp_feel)
+            context['city'] = city
+            
             try:
                 image_url = get_city_image_url(city)
             except Exception as e:
                 print(e)
             else:
                 context['image_url'] = image_url
-            print(image_url)
-            context['temp'] = round(temp)
-            context['temp_feel'] = round(temp_feel)
-            context['city'] = city
+                
 
     return render(request, 'weather/weather_index.html', context)
