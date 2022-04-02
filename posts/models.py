@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 class Category(models.Model):
     """Категории публикаций"""
     name = models.CharField('Название', max_length=255)
+
     photo = models.ImageField('Фотография', upload_to='cat_photos', blank=True)
 
     def __str__(self) -> str:
@@ -21,6 +22,7 @@ class Category(models.Model):
 
 
 def validate_summary(summary):
+
     summary_words = len(summary.split())
     if summary_words > 133:
         raise ValidationError(
@@ -38,8 +40,10 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                verbose_name='Автор', related_name='posts')
+
     category = models.ForeignKey(Category, on_delete=models.SET_NULL,
                                  null=True, verbose_name='Категория', related_name='posts')
+
     photo = models.ImageField(
         'Фотография', upload_to='post_photos', blank=True, null=True)
 

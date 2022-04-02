@@ -7,10 +7,10 @@ app_name = 'posts'
 
 urlpatterns = [
     path('', index, name='home'),
-    path('post/<int:post_pk>', post, name='post'),
-    path('all_posts', all_posts, name='posts'),
-    path('category/<int:cat_pk>', show_category, name='category'),
-    path('registration', registration, name='registration'),
-    path('authorization', authorization, name='authorization'),
-    path('logout', logout_user, name='logout'),
+    path('post/<int:post_pk>/', post, name='post'),
+    path('all_posts/', all_posts, name='posts'),
+    path('category/<int:cat_pk>/', show_category, name='category'),
+    path('registration/', registration, name='registration'),
+    path('authorization/', authorization, name='authorization'),
+    path('logout/', logout_user, name='logout'),
 ]

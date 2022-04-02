@@ -19,6 +19,8 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
+    'debug_toolbar',
+
 
     'posts.apps.PostsConfig',
     'questions.apps.QuestionsConfig',
@@ -34,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'geo.urls'
@@ -98,3 +101,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+INTERNAL_IPS = ["127.0.0.1"]
