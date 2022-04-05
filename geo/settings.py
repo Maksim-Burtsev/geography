@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'debug_toolbar',
+    'rest_framework',
 
 
     'posts.apps.PostsConfig',
