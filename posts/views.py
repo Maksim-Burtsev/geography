@@ -6,7 +6,10 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 
+from rest_framework import viewsets
+
 from posts.models import Post, Category
+from posts.serializers import PostSerializer
 
 from forum.models import Topic
 
@@ -98,3 +101,9 @@ def logout_user(request):
     """Выход из аккаунта"""
     logout(request)
     return redirect('posts:home')
+
+
+class PostViewSet(viewsets.ReadOnlyModelViewSet):
+
+    queryset = Post.objects.filter(is_publish=True)
+    serializer_class = PostSerializer

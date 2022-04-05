@@ -14,16 +14,16 @@ def index_questions(request):
 
 def show_test(request, test_pk):
     """Страница теста"""
+
     context = {}
+
     test = Test.objects.prefetch_related('questions__answers').get(pk=test_pk)
+    context['test'] = test
 
     if request.method == 'POST':
         res, questions, percent = _get_test_result(request, test, test_pk)
         context['res'] = res
         context['questions'] = questions
         context['percent'] = percent
-
-
-    context['test'] = test
 
     return render(request, 'questions/show_test.html', context)
